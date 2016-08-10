@@ -31,6 +31,7 @@ if cmd == "help":
 	print "\tmute\tDisable beep sound when card is tagged."
 	print "\tunmute\tEnable beep sound when card is tagged."
 	print "\tgetuid\tPrint UID of the tagged card."
+	print "\tinfo\tPrint card type and available protocols."
 	sys.exit()
 
 cmdMap = {
