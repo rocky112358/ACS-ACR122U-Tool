@@ -8,8 +8,6 @@ Python tool for ACR122U NFC Reader/Writer
 ## Command List (Help Page)
 * usage: python nfctool.py <command>
 
-* List of available commands: help, mute, unmute, getuid
-
 * Before executing command, make sure that a card is being tagged on the reader.
 
 * help: Show this command list
