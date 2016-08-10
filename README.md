@@ -19,3 +19,5 @@ Python tool for ACR122U NFC Reader/Writer
 * unmute: Enable beep sound when card is tagged.
 
 * getuid: Print UID of the tagged card.
+
+* info: Print card type and available protocols.
