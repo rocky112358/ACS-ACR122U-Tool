@@ -6,7 +6,7 @@ Python tool for ACR122U NFC Reader/Writer
 * python 2.7.10
 
 ## Command List (Help Page)
- usage: python nfctool.py <command>
+     $ python nfctool.py <command>
 
  Before executing command, make sure that a card is being tagged on the reader.
 
@@ -20,15 +20,27 @@ Python tool for ACR122U NFC Reader/Writer
 
 * info: Print card type and available protocols.
 
-* loadkey <key>: Load key <key> (6byte hexstring) for auth. (The loaded key is volatile. Lasts till device off)
+* loadkey \<key\>: Load key \<key\> (6byte hexstring) for auth. (The loaded key is volatile. Lasts till device off.)
 
-* read <sector>: Read sector <sector> with loaded key.
+* read \<sector\>: Read sector \<sector\> with loaded key.
 
 * firmver: Print the firmware version of the reader.
 
 ## How to read data
 * Connect the reader to computer and put a card on the reader. Check connection with 'getuid' or 'info' command.
 
-* Load key with 'loadkey' command (ex) python nfctool.py loadkey FFFFFFFFFFFF)
+* Load key with 'loadkey' command (This procedure is not needed for MIFARE Ultralight)
 
-* Read sector with 'read' command (ex) python nfctool.py read 4)
+          $ python nfctool.py loadkey FFFFFFFFFFFF
+
+* Read sector with 'read' command
+
+          $ python nfctool.py read 4
+
+## TODO
+* Make options for 'read' command
+
+## Copyright
+Copyright © 2016 Kim Dong Min.
+
+The MIT License (MIT)
