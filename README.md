@@ -6,9 +6,9 @@ Python tool for ACR122U NFC Reader/Writer
 * python 2.7.10
 
 ## Command List (Help Page)
-* usage: python nfctool.py <command>
+ usage: python nfctool.py <command>
 
-* Before executing command, make sure that a card is being tagged on the reader.
+ Before executing command, make sure that a card is being tagged on the reader.
 
 * help: Show this command list
 
