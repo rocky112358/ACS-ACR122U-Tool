@@ -3,7 +3,6 @@ Python tool for ACR122U NFC Reader/Writer
 
 ## Enviroment
 * pyscard 1.9.4
-
 * python 2.7.10
 
 ## Command List (Help Page)
