@@ -1,6 +1,10 @@
 # ACS-ACR122U-Tool
 Python tool for ACR122U NFC Reader/Writer
 
+## Notice (2018-03-24)
+There will be any update from me for a while because I don't have the hardware now. 
+Pull requests are welcome.
+
 ## Enviroment
 * pyscard 1.9.4
 * python 2.7.10
