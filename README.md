@@ -7,7 +7,7 @@ Pull requests are welcome.
 
 ## Enviroment
 * pyscard 2.0.3
-* python 3.X
+* python 3.x
 
 ## Command List (Help Page)
      $ python nfctool.py <command>
