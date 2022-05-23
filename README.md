@@ -6,8 +6,8 @@ There will be no update from me for a while because I don't have the hardware no
 Pull requests are welcome.
 
 ## Enviroment
-* pyscard 1.9.4
-* python 2.7.10
+* pyscard 2.0.3
+* python 3.x
 
 ## Command List (Help Page)
      $ python nfctool.py <command>
