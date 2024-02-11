@@ -13,6 +13,7 @@ def print_help():
     print("    info                Print card type and available protocols")
     print("    loadkey <key>       Load key <key> (6-byte hex string) for authentication")
     print("    read <sector>       Read sector <sector> with loaded key")
+    print("    write <sector> <data>   Write data to sector <sector>")
     print("    firmver             Print the firmware version of the reader")
     sys.exit()
 
@@ -26,6 +27,31 @@ def get_card_reader():
 def send_command(connection, command):
     data, sw1, sw2 = connection.transmit(command)
     return data, sw1, sw2
+
+def write_sector(connection, sector, data):
+    # Check if the data length is appropriate (16 bytes per block)
+    if len(data) != 16 * 4:
+        print("Error: Data length must be 16 bytes per block")
+        return
+
+    # Authenticate with key A
+    command_auth = [0xFF, 0x86, 0x00, 0x00, 0x05, 0x01, 0x00, sector * 4, 0x60, 0x00]
+    _, sw1, sw2 = send_command(connection, command_auth)
+    if (sw1, sw2) != (0x90, 0x00):
+        # Authentication failed
+        print("Error: Authentication failed for sector", sector)
+        return
+
+    # Write data to each block in the sector
+    for block in range(sector * 4, sector * 4 + 4):
+        command_write = [0xFF, 0xD6, 0x00, block, 16] + data[block * 16:block * 16 + 16]
+        _, sw1, sw2 = send_command(connection, command_write)
+        if (sw1, sw2) != (0x90, 0x00):
+            # Writing failed
+            print("Error: Writing failed for block", block)
+            return
+
+    print("Data written successfully to sector", sector)
 
 def main():
     if len(sys.argv) < 2:
@@ -74,6 +100,14 @@ def main():
             print("Sector", sector, "Data:", toHexString(data))
         else:
             print("Failed to read sector", sector)
+
+    elif command == "write":
+        if len(sys.argv) < 4:
+            print("Usage: python nfctool.py write <sector> <data>")
+            sys.exit()
+        sector = int(sys.argv[2])
+        data = bytearray.fromhex(sys.argv[3])
+        write_sector(connection, sector, data)
 
     elif command == "firmver":
         data, _, _ = send_command(connection, [0xFF, 0x00, 0x48, 0x00, 0x00])
